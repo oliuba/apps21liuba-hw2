@@ -23,8 +23,20 @@ public class QueueTest {
     }
 
     @Test
+    public void peekEmpty() {
+        queue = new Queue();
+        assertNull(queue.peek());
+    }
+
+    @Test
     public void dequeue() {
         assertEquals(1, queue.peek());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void dequeueEmpty() {
+        queue = new Queue();
+        queue.dequeue();
     }
 
 }

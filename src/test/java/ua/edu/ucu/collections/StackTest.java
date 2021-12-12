@@ -25,8 +25,20 @@ public class StackTest {
         assertEquals(1, stack.pop());
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void popEmpty() {
+        stack = new Stack();
+        stack.pop();
+    }
+
     @Test
     public void peek() {
         assertEquals(5, stack.peek());
+    }
+
+    @Test
+    public void peekEmpty() {
+        stack = new Stack();
+        assertNull(stack.peek());
     }
 }
