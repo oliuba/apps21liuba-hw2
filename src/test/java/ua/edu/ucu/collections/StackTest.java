@@ -17,6 +17,13 @@ public class StackTest {
     }
 
     @Test
+    public void testConstructor() {
+        Object[] elems = {1,2,3};
+        stack = new Stack(elems);
+        assertEquals(3, stack.peek());
+    }
+
+    @Test
     public void pop() {
         assertEquals(5, stack.pop());
         assertEquals(4, stack.pop());

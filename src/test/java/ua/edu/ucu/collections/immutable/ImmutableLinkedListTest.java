@@ -66,6 +66,13 @@ public class ImmutableLinkedListTest {
         assertEquals(1, linkedList.get(0));
     }
 
+    @Test
+    public void testGetEnd() {
+        Object[] old = {1,2,4};
+        ImmutableLinkedList linkedList = new ImmutableLinkedList(old);
+        assertEquals(4, linkedList.get(2));
+    }
+
     @Test(expected = IndexOutOfBoundsException.class)
     public void testGetWrongIndex() {
         Object[] old = {1,2,4};

@@ -16,7 +16,14 @@ public class QueueTest {
     }
 
     @Test
-    public void peek() {
+    public void testConstructor() {
+        Object[] elems = {1,2,3};
+        queue = new Queue(elems);
+        assertEquals(1, queue.peek());
+    }
+
+    @Test
+    public void dequeue() {
         assertEquals(1, queue.dequeue());
         assertEquals(2, queue.dequeue());
         assertEquals(3, queue.dequeue());
@@ -29,7 +36,7 @@ public class QueueTest {
     }
 
     @Test
-    public void dequeue() {
+    public void peek() {
         assertEquals(1, queue.peek());
     }
 
@@ -38,5 +45,4 @@ public class QueueTest {
         queue = new Queue();
         queue.dequeue();
     }
-
 }
