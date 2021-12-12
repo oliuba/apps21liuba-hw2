@@ -54,7 +54,7 @@ public final class ImmutableLinkedList implements ImmutableList {
             checkIndex(index);
         }
         int newSize = size + c.length;
-        Object newElements[] = new Object[newSize];
+        Object[] newElements = new Object[newSize];
         Node temp = head;
         for (int i = 0; i < index; i++) {
             newElements[i] = temp.getValue();
@@ -85,7 +85,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableLinkedList remove(int index) {
         checkIndex(index);
-        Object newElements[] = new Object[size-1];
+        Object[] newElements = new Object[size-1];
         Node temp = head;
         int oldIndex = 0;
         int newIndex = 0;
@@ -103,7 +103,7 @@ public final class ImmutableLinkedList implements ImmutableList {
     @Override
     public ImmutableLinkedList set(int index, Object e) {
         checkIndex(index);
-        Object array[] = this.toArray();
+        Object[] array = this.toArray();
         array[index] = e;
         return new ImmutableLinkedList(array);
     }
@@ -116,7 +116,10 @@ public final class ImmutableLinkedList implements ImmutableList {
             temp = temp.getNext();
             currIndex++;
         }
-        return (currIndex < size ? currIndex : -1);
+        if (currIndex < size) {
+            return currIndex;
+        }
+        return -1;
     }
 
     @Override
@@ -136,7 +139,7 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public Object[] toArray() {
-        Object array[] = new Object[size];
+        Object[] array = new Object[size];
         Node temp = head;
         for (int i = 0; i < size; i++) {
             array[i] = temp.getValue();
